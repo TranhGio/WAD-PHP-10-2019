@@ -1,21 +1,20 @@
 <?php
     function BuyCandy($Money){
-        $CandyShell=0;
-        $Candy=$Money/200;
-        $CandyShell = $Candy;
+        $candy = $Money/200;
+        $candyShell = $candy;
         while(true){
-            if($CandyShell>=2){
-                $CandyTemp = $Candy;
-                $Candy += $CandyShell/2;
-                
-                $CandyShell -= $CandyShell;
-                $CandyShell += $CandyTemp - $Candy;
+            if($candyShell%2==0){
+                $candy+=$candyShell/2;
+                $candyShell = $candyShell/2;
             } else{
+                $candy+=($candyShell-1)/2;
+                $candyShell = ($candyShell-1)/2 +1;
+            }
+            if($candyShell<=1){
                 break;
             }
         }
-        return $Candy;
-        
+        return $candy;
     }
     echo "" . BuyCandy(2000);
 ?>
